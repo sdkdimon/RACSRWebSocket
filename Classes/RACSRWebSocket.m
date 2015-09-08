@@ -18,12 +18,38 @@
 
 @implementation RACSRWebSocket
 
--(id)initWithURL:(NSURL *)url{
-    if((self = [super initWithURL:url]) != nil){
+- (id)initWithURLRequest:(NSURLRequest *)request protocols:(NSArray *)protocols{
+    self = [super initWithURLRequest:request protocols:protocols];
+    if(self != nil){
         [self initialize];
     }
     return self;
 }
+- (id)initWithURLRequest:(NSURLRequest *)request{
+    self = [super initWithURLRequest:request];
+    if(self != nil){
+        [self initialize];
+    }
+    return self;
+}
+
+- (id)initWithURL:(NSURL *)url protocols:(NSArray *)protocols{
+    self = [super initWithURL:url protocols:protocols];
+    if(self != nil){
+        [self initialize];
+    }
+    return self;
+}
+
+- (id)initWithURL:(NSURL *)url{
+    self = [super initWithURL:url];
+    if(self != nil){
+        [self initialize];
+    }
+    return self;
+}
+
+
 
 
 -(void)initialize{
