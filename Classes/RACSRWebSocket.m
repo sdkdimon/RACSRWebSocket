@@ -13,12 +13,10 @@
 @property(strong,nonatomic,readwrite) RACSubject *webSocketDidCloseSubject;
 @property(strong,nonatomic,readwrite) RACSubject *webSocketDidReceivePongSubject;
 
-
 @end
 
 
 @implementation RACSRWebSocket
-
 
 -(id)initWithURL:(NSURL *)url{
     if((self = [super initWithURL:url]) != nil){
@@ -54,48 +52,71 @@
 
 
 -(void)send:(id)data{
-    if(_outgouingMessageTransformerBlock){
-        data = _outgouingMessageTransformerBlock(data);
+    if(_outgoingMessageTransformer){
+        data = [_outgoingMessageTransformer transformedValue:data];
     }
-    NSLog(@"\n");
-    NSLog(@"//=======================================");
-    NSLog(@"webSocket will send data: %@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-    NSLog(@"//=======================================");
-    NSLog(@"\n");
     [super send:data];
 }
 
 -(RACSignal *)openConnection{
-    @weakify(self);
-    return [self readyState] == SR_CONNECTING ?
-        [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-            @strongify(self);
-            RACDisposable *openSignalDisposable = [[self webSocketDidOpenSignal] subscribeNext:^(id x) {
-                [subscriber sendNext:nil];
-                [subscriber sendCompleted];
-            }];
-            RACDisposable *failSignalDisposable = [[self webSocketDidFailSignal] subscribeNext:^(RACTuple *args) {
-                [subscriber sendError:[args second]];
-            }];
-            [self open];
-            return [RACCompoundDisposable compoundDisposableWithDisposables:@[openSignalDisposable,failSignalDisposable]];
-        }] : [RACSignal return:nil];
     
-  
+    switch ([self readyState]) {
+        case SR_OPEN:
+            return [RACSignal return:nil];
+        case SR_CLOSED:
+        case SR_CONNECTING:{
+            @weakify(self);
+            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+                        @strongify(self);
+                        RACDisposable *openSignalDisposable = [[self webSocketDidOpenSignal] subscribeNext:^(id x) {
+                            [subscriber sendNext:nil];
+                            [subscriber sendCompleted];
+                        }];
+                        RACDisposable *failSignalDisposable = [[self webSocketDidFailSignal] subscribeNext:^(RACTuple *args) {
+                            [subscriber sendError:[args second]];
+                        }];
+                        [self open];
+                        return [RACCompoundDisposable compoundDisposableWithDisposables:@[openSignalDisposable,failSignalDisposable]];
+                    }];
+            
+        }
+        case SR_CLOSING:
+            return [RACSignal error:nil];
+    }
 }
 
-
+-(RACSignal *)closeConnection{
+    switch ([self readyState]) {
+        case SR_OPEN:{
+            @weakify(self);
+            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+                @strongify(self);
+                RACDisposable *closeSignalDisposable = [[self webSocketDidCloseSignal] subscribeNext:^(id x) {
+                    [subscriber sendNext:nil];
+                    [subscriber sendCompleted];
+                }];
+                RACDisposable *failSignalDisposable = [[self webSocketDidFailSignal] subscribeNext:^(RACTuple *args) {
+                    [subscriber sendError:[args second]];
+                }];
+                [self close];
+                return [RACCompoundDisposable compoundDisposableWithDisposables:@[closeSignalDisposable,failSignalDisposable]];
+            }];
+            
+        }
+        case SR_CLOSED:
+            return [RACSignal return:nil];
+        case SR_CONNECTING:
+        case SR_CLOSING:
+            return [RACSignal error:nil];
+    }
+}
 
 #pragma mark - SRWebSocketDelegate
 
 -(void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message{
-    NSLog(@"\n");
-    NSLog(@"//=======================================");
-    NSLog(@"webSocket didReceiveMessage: %@",message);
-    NSLog(@"//=======================================");
-    NSLog(@"\n");
-    if(_incomingMessageTransformerBlock){
-        message = _incomingMessageTransformerBlock(message);
+
+    if(_incomingMessageTransformer){
+        message = [_incomingMessageTransformer transformedValue:message];
     }
     
     RACTuple *args = [RACTuple tupleWithObjects:webSocket,message,nil];

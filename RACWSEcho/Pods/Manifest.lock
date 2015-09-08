@@ -1,0 +1,19 @@
+PODS:
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
+  - SocketRocket (0.4)
+
+DEPENDENCIES:
+  - ReactiveCocoa (= 2.5)
+  - SocketRocket (= 0.4)
+
+SPEC CHECKSUMS:
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  SocketRocket: 01443933b7bc362621325f4607b80b4286a99707
+
+COCOAPODS: 0.38.2
