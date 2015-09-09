@@ -1,24 +1,22 @@
 //
-//  CustomTransformer.m
+//  IncomingMessageTransformer.m
 //  RACWSEcho
 //
 //  Created by dimon on 08/09/15.
 //
 //
 
-#import "OutgoingMessageTransformer.h"
+#import "ResponseMessageTransformer.h"
 
-@implementation OutgoingMessageTransformer
-
+@implementation ResponseMessageTransformer
 + (Class)transformedValueClass { return [NSString class]; }
 
 + (BOOL)allowsReverseTransformation { return NO; }
 
 - (id)transformedValue:(id)value {
     NSLog(@"Transform value with %@",NSStringFromClass([self class]));
-    id transformedValue = [value uppercaseString];
+    id transformedValue = [value lowercaseString];
     NSLog(@"source --> %@ transformed --> %@",value,transformedValue);
     return transformedValue;
 }
-
 @end

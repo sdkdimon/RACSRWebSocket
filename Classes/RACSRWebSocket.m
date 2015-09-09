@@ -78,8 +78,8 @@
 
 
 -(void)send:(id)data{
-    if(_outgoingMessageTransformer){
-        data = [_outgoingMessageTransformer transformedValue:data];
+    if(_requestMessageTransformer){
+        data = [_requestMessageTransformer transformedValue:data];
     }
     [super send:data];
 }
@@ -141,8 +141,8 @@
 
 -(void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message{
 
-    if(_incomingMessageTransformer){
-        message = [_incomingMessageTransformer transformedValue:message];
+    if(_responseMessageTransformer){
+        message = [_responseMessageTransformer transformedValue:message];
     }
     
     RACTuple *args = [RACTuple tupleWithObjects:webSocket,message,nil];

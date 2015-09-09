@@ -12,8 +12,8 @@
 @property(weak,nonatomic,readonly) RACSignal *webSocketDidReceivePongSignal;
 
 @property(strong,nonatomic,readonly) RACCommand *sendDataCommand;
-@property(strong,nonatomic,readwrite) NSValueTransformer *outgoingMessageTransformer;
-@property(strong,nonatomic,readwrite) NSValueTransformer *incomingMessageTransformer;
+@property(strong,nonatomic,readwrite) NSValueTransformer *requestMessageTransformer;
+@property(strong,nonatomic,readwrite) NSValueTransformer *responseMessageTransformer;
 
 
 /**

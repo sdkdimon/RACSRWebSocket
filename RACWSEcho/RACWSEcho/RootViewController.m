@@ -8,8 +8,8 @@
 
 #import "RootViewController.h"
 #import "RACSRWebSocket.h"
-#import "IncomingMessageTransformer.h"
-#import "OutgoingMessageTransformer.h"
+#import "ResponseMessageTransformer.h"
+#import "RequestMessageTransformer.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 static NSString * const WS_URL = @"ws://echo.websocket.org";
@@ -72,8 +72,8 @@ static NSString * const WS_URL = @"ws://echo.websocket.org";
     if(_wsClient == nil){
         _wsClient = [[RACSRWebSocket alloc] initWithURL:[NSURL URLWithString:WS_URL]];
         [self subscribeOnWebSocketEvents];
-        [_wsClient setIncomingMessageTransformer:[[IncomingMessageTransformer alloc] init]];
-        [_wsClient setOutgoingMessageTransformer:[[OutgoingMessageTransformer alloc] init]];
+        [_wsClient setResponseMessageTransformer:[[ResponseMessageTransformer alloc] init]];
+        [_wsClient setRequestMessageTransformer:[[RequestMessageTransformer alloc] init]];
 
     }
     return _wsClient;
