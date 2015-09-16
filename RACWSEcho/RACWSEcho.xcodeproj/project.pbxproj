@@ -7,20 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8AB0377B1BA98BBA00192476 /* RACSRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AB0377A1BA98BBA00192476 /* RACSRWebSocket.m */; };
 		8ADA51A81B9EE1A30032B3B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADA51A71B9EE1A30032B3B9 /* main.m */; };
 		8ADA51AB1B9EE1A30032B3B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADA51AA1B9EE1A30032B3B9 /* AppDelegate.m */; };
 		8ADA51AE1B9EE1A30032B3B9 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADA51AD1B9EE1A30032B3B9 /* RootViewController.m */; };
 		8ADA51B31B9EE1A30032B3B9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ADA51B21B9EE1A30032B3B9 /* Images.xcassets */; };
-		8ADA51D01B9EE2310032B3B9 /* RACSRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADA51CF1B9EE2310032B3B9 /* RACSRWebSocket.m */; };
 		8ADA51D21B9EE3A60032B3B9 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ADA51D11B9EE3A60032B3B9 /* RootView.xib */; };
-		8ADA51D61B9EF3560032B3B9 /* RequestMessageTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADA51D51B9EF3560032B3B9 /* RequestMessageTransformer.m */; };
-		8ADA51D91B9EF8600032B3B9 /* ResponseMessageTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ADA51D81B9EF8600032B3B9 /* ResponseMessageTransformer.m */; };
 		E68F6E634783C22D8E9B5CCD /* libPods-RACWSEcho.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37972D225548E081A20BB25A /* libPods-RACWSEcho.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		37972D225548E081A20BB25A /* libPods-RACWSEcho.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RACWSEcho.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42635A34F5FF9DA9FEB1C0E9 /* Pods-RACWSEcho.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RACWSEcho.release.xcconfig"; path = "Pods/Target Support Files/Pods-RACWSEcho/Pods-RACWSEcho.release.xcconfig"; sourceTree = "<group>"; };
+		8AB037791BA98BBA00192476 /* RACSRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RACSRWebSocket.h; sourceTree = "<group>"; };
+		8AB0377A1BA98BBA00192476 /* RACSRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RACSRWebSocket.m; sourceTree = "<group>"; };
 		8ADA51A21B9EE1A30032B3B9 /* RACWSEcho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RACWSEcho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADA51A61B9EE1A30032B3B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8ADA51A71B9EE1A30032B3B9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -29,13 +29,7 @@
 		8ADA51AC1B9EE1A30032B3B9 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		8ADA51AD1B9EE1A30032B3B9 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		8ADA51B21B9EE1A30032B3B9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		8ADA51CE1B9EE2310032B3B9 /* RACSRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RACSRWebSocket.h; sourceTree = "<group>"; };
-		8ADA51CF1B9EE2310032B3B9 /* RACSRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RACSRWebSocket.m; sourceTree = "<group>"; };
 		8ADA51D11B9EE3A60032B3B9 /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
-		8ADA51D41B9EF3560032B3B9 /* RequestMessageTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestMessageTransformer.h; sourceTree = "<group>"; };
-		8ADA51D51B9EF3560032B3B9 /* RequestMessageTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestMessageTransformer.m; sourceTree = "<group>"; };
-		8ADA51D71B9EF8600032B3B9 /* ResponseMessageTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseMessageTransformer.h; sourceTree = "<group>"; };
-		8ADA51D81B9EF8600032B3B9 /* ResponseMessageTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResponseMessageTransformer.m; sourceTree = "<group>"; };
 		D91D9F6888DA5A3CA61DEA8E /* Pods-RACWSEcho.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RACWSEcho.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RACWSEcho/Pods-RACWSEcho.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,6 +45,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8AB037781BA98BBA00192476 /* RACSRWebSocket */ = {
+			isa = PBXGroup;
+			children = (
+				8AB037791BA98BBA00192476 /* RACSRWebSocket.h */,
+				8AB0377A1BA98BBA00192476 /* RACSRWebSocket.m */,
+			);
+			name = RACSRWebSocket;
+			path = ../../RACSRWebSocket;
+			sourceTree = "<group>";
+		};
 		8ADA51991B9EE1A30032B3B9 = {
 			isa = PBXGroup;
 			children = (
@@ -72,7 +76,7 @@
 		8ADA51A41B9EE1A30032B3B9 /* RACWSEcho */ = {
 			isa = PBXGroup;
 			children = (
-				8ADA51CD1B9EE2310032B3B9 /* Classes */,
+				8AB037781BA98BBA00192476 /* RACSRWebSocket */,
 				8ADA51CC1B9EE1FA0032B3B9 /* RootViewController */,
 				8ADA51CB1B9EE1D60032B3B9 /* AppDelegate */,
 				8ADA51B21B9EE1A30032B3B9 /* Images.xcassets */,
@@ -102,33 +106,11 @@
 		8ADA51CC1B9EE1FA0032B3B9 /* RootViewController */ = {
 			isa = PBXGroup;
 			children = (
-				8ADA51D31B9EF3360032B3B9 /* Transformer */,
 				8ADA51D11B9EE3A60032B3B9 /* RootView.xib */,
 				8ADA51AC1B9EE1A30032B3B9 /* RootViewController.h */,
 				8ADA51AD1B9EE1A30032B3B9 /* RootViewController.m */,
 			);
 			name = RootViewController;
-			sourceTree = "<group>";
-		};
-		8ADA51CD1B9EE2310032B3B9 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				8ADA51CE1B9EE2310032B3B9 /* RACSRWebSocket.h */,
-				8ADA51CF1B9EE2310032B3B9 /* RACSRWebSocket.m */,
-			);
-			name = Classes;
-			path = ../../Classes;
-			sourceTree = "<group>";
-		};
-		8ADA51D31B9EF3360032B3B9 /* Transformer */ = {
-			isa = PBXGroup;
-			children = (
-				8ADA51D41B9EF3560032B3B9 /* RequestMessageTransformer.h */,
-				8ADA51D51B9EF3560032B3B9 /* RequestMessageTransformer.m */,
-				8ADA51D71B9EF8600032B3B9 /* ResponseMessageTransformer.h */,
-				8ADA51D81B9EF8600032B3B9 /* ResponseMessageTransformer.m */,
-			);
-			name = Transformer;
 			sourceTree = "<group>";
 		};
 		E806F61E76951EEBC64D989A /* Frameworks */ = {
@@ -251,12 +233,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8ADA51D61B9EF3560032B3B9 /* RequestMessageTransformer.m in Sources */,
 				8ADA51AE1B9EE1A30032B3B9 /* RootViewController.m in Sources */,
-				8ADA51D01B9EE2310032B3B9 /* RACSRWebSocket.m in Sources */,
+				8AB0377B1BA98BBA00192476 /* RACSRWebSocket.m in Sources */,
 				8ADA51AB1B9EE1A30032B3B9 /* AppDelegate.m in Sources */,
 				8ADA51A81B9EE1A30032B3B9 /* main.m in Sources */,
-				8ADA51D91B9EF8600032B3B9 /* ResponseMessageTransformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

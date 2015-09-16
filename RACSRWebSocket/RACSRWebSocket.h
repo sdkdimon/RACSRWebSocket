@@ -1,4 +1,4 @@
-// RootViewController.h
+// RACSRWebSocket.h
 // Copyright (c) 2015 Dmitry Lizin (sdkdimon@gmail.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,9 +19,22 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
 
-@interface RootViewController : UIViewController
+#import <SocketRocket/SRWebSocket.h>
+#import <ReactiveCocoa/RACSignal.h>
+#import <ReactiveCocoa/RACCommand.h>
+
+@interface RACSRWebSocket : SRWebSocket
+
+@property(weak,nonatomic,readonly) RACSignal *webSocketDidOpenSignal;
+@property(weak,nonatomic,readonly) RACSignal *webSocketDidReceiveMessageSignal;
+@property(weak,nonatomic,readonly) RACSignal *webSocketDidFailSignal;
+@property(weak,nonatomic,readonly) RACSignal *webSocketDidCloseSignal;
+@property(weak,nonatomic,readonly) RACSignal *webSocketDidReceivePongSignal;
+
+@property(strong,nonatomic,readonly) RACCommand *sendDataCommand;
+
+-(RACSignal *)openConnection;
+-(RACSignal *)closeConnection;
 
 @end
-
