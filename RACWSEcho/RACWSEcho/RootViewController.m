@@ -25,7 +25,7 @@
 
 static NSString * const WS_URL = @"ws://echo.websocket.org";
 
-@interface RootViewController () <UITextFieldDelegate>
+@interface RootViewController () <UITextFieldDelegate,RACSRWebSocketMessageTransformer>
 @property (weak, nonatomic) IBOutlet UIButton *clearLogButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *connectButton;
@@ -82,6 +82,7 @@ static NSString * const WS_URL = @"ws://echo.websocket.org";
     
     if(_wsClient == nil){
         _wsClient = [[RACSRWebSocket alloc] initWithURL:[NSURL URLWithString:WS_URL]];
+        [_wsClient setMessageTransformer:self];
         [self subscribeOnWebSocketEvents];
     }
     return _wsClient;
@@ -120,6 +121,16 @@ static NSString * const WS_URL = @"ws://echo.websocket.org";
 
 -(void)clearLog{
     [_logTextView setText:nil];
+}
+
+#pragma mark RACSRWebSocketMessageTransformer
+
+-(NSString *)websocket:(RACSRWebSocket *)websocket transformRequestMessage:(NSString *)message{
+    return [message stringByAppendingString:@"transformRequestMessage"];
+}
+
+-(NSString *)websocket:(RACSRWebSocket *)websocket transformResponseMessage:(id)message{
+    return [message stringByAppendingString:@"transformResponseMessage"];
 }
 
 #pragma mark UITextFieldDelegate
