@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "RACSRWebSocket"
-  s.version          = "1.1.1"
+  s.version          = "1.1.2"
   s.summary          = "Reactive SocketRocket"
   s.homepage         = "https://github.com/sdkdimon/RACSRWebSocket"
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
