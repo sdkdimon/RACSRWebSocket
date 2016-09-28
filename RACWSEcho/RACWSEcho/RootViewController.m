@@ -41,7 +41,7 @@ static NSString * const WS_URL = @"ws://echo.websocket.org";
 @implementation RootViewController
 @synthesize wsClient = _wsClient;
 
--(void)setupBindings{
+- (void)setupBindings{
     [_connectButton addTarget:self action:@selector(connect:) forControlEvents:UIControlEventTouchUpInside];
     [_diconnectButton addTarget:self action:@selector(disconnect:) forControlEvents:UIControlEventTouchUpInside];
     [_sendButton addTarget:self action:@selector(send:) forControlEvents:UIControlEventTouchUpInside];
@@ -54,31 +54,32 @@ static NSString * const WS_URL = @"ws://echo.websocket.org";
     [super viewDidLoad];
     [self clearLog];
     [self setupBindings];
+    [_messageTextField setDelegate:self];
 }
 
 #pragma mark UIActions
 
--(void)connect:(UIButton *)sender{
-    [[[self wsClient] openConnection] subscribeNext:^(id x) {
+- (void)connect:(UIButton *)sender{
+    [[[self wsClient] openConnectionSignal] subscribeNext:^(id x) {
         NSLog(@"connected");
     }];
 }
 
--(void)disconnect:(UIButton *)sender{
+- (void)disconnect:(UIButton *)sender{
     @weakify(self);
-    [[[self wsClient] closeConnection] subscribeNext:^(id x) {
+    [[[self wsClient] closeConnectionSignal] subscribeNext:^(id x) {
         @strongify(self);
          NSLog(@"disconnected");
         [self setWsClient:nil];
     }];
 }
 
--(void)send:(UIButton *)sender{
+- (void)send:(UIButton *)sender{
     NSString *textMessage = [_messageTextField text];
     if([textMessage length] > 0) {[[[self wsClient] sendDataCommand] execute:textMessage];}
 }
 
--(RACSRWebSocket *)wsClient{
+- (RACSRWebSocket *)wsClient{
     
     if(_wsClient == nil){
         _wsClient = [[RACSRWebSocket alloc] initWithURL:[NSURL URLWithString:WS_URL]];
@@ -88,7 +89,7 @@ static NSString * const WS_URL = @"ws://echo.websocket.org";
     return _wsClient;
 }
 
--(void)subscribeOnWebSocketEvents{
+- (void)subscribeOnWebSocketEvents{
     @weakify(self);
     
     [[_wsClient webSocketDidCloseSignal] subscribeNext:^(id x) {
@@ -109,7 +110,7 @@ static NSString * const WS_URL = @"ws://echo.websocket.org";
     
 }
 
--(void)logMessage:(NSString *)message{
+- (void)logMessage:(NSString *)message{
     NSString *logText = [_logTextView text];
     if(logText != nil && [logText length] > 0){
         NSString *newLogText = [NSString stringWithFormat:@"%@\n%@",logText,message];
@@ -119,23 +120,23 @@ static NSString * const WS_URL = @"ws://echo.websocket.org";
     [_logTextView setText:message];
 }
 
--(void)clearLog{
+- (void)clearLog{
     [_logTextView setText:nil];
 }
 
 #pragma mark RACSRWebSocketMessageTransformer
 
--(NSString *)websocket:(RACSRWebSocket *)websocket transformRequestMessage:(NSString *)message{
+- (NSString *)websocket:(RACSRWebSocket *)websocket transformRequestMessage:(NSString *)message{
     return [message stringByAppendingString:@"transformRequestMessage"];
 }
 
--(NSString *)websocket:(RACSRWebSocket *)websocket transformResponseMessage:(id)message{
+- (NSString *)websocket:(RACSRWebSocket *)websocket transformResponseMessage:(id)message{
     return [message stringByAppendingString:@"transformResponseMessage"];
 }
 
 #pragma mark UITextFieldDelegate
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
     return YES;
 }
