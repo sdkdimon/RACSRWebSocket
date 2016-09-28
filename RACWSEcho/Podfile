@@ -3,6 +3,6 @@
 
 target 'RACWSEcho' do
 pod 'ReactiveCocoa', '2.5'
-pod 'SocketRocket', '0.4'
+pod 'SocketRocket', '0.5.1'
 end
 

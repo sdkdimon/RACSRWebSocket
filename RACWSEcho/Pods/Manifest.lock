@@ -6,14 +6,16 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-  - SocketRocket (0.4)
+  - SocketRocket (0.5.1)
 
 DEPENDENCIES:
   - ReactiveCocoa (= 2.5)
-  - SocketRocket (= 0.4)
+  - SocketRocket (= 0.5.1)
 
 SPEC CHECKSUMS:
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
-  SocketRocket: 01443933b7bc362621325f4607b80b4286a99707
+  SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
 
-COCOAPODS: 0.38.2
+PODFILE CHECKSUM: 0c9b2dea19eba4164295eef4ef319f3f0012a75f
+
+COCOAPODS: 1.0.1

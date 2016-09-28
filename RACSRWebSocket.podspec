@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "RACSRWebSocket"
-  s.version          = "1.1.2"
+  s.version          = "1.1.3"
   s.summary          = "Reactive SocketRocket"
   s.homepage         = "https://github.com/sdkdimon/RACSRWebSocket"
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.module_name = 'RACSRWebSocket'
   s.source_files = 'RACSRWebSocket/*.{h,m}'
   s.dependency 'ReactiveCocoa', '2.5'
-  s.dependency 'SocketRocket', '0.4'
+  s.dependency 'SocketRocket', '0.5.1'
 end
 
 
